@@ -58,3 +58,11 @@ CREATE TIMESERIES root.fabrik1.linie01.steuerung01.status WITH DATATYPE=BOOLEAN,
     <version>0.9.1</version>
 </dependency>
 ```
+
+## Advanced Queries
+
+```
+SELECT COUNT(*) FROM root.fabrik1.linie01.steuerung01
+SELECT SUM(counter) FROM root.fabrik1.linie01.steuerung01
+SELECT AVG(counter)  FROM root.fabrik1.linie01.steuerung01 GROUP BY (1d, [1583020800000, NOW()])
+```
