@@ -77,10 +77,11 @@ public class HelloIoTDB {
 
         final Instant start = LocalDate.of(2020, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant();
         final Random random = new Random();
-        for (int day = 0; day <= 100; day++) {
+        for (int day = 0; day <= 10; day++) {
             for (int s = 0; s <= 86400; s++) {
                 final long ts = start.plus(day, ChronoUnit.DAYS).plus(s, ChronoUnit.SECONDS).toEpochMilli();
                 statement.addBatch("insert into root.fabrik1.linie01.steuerung01(timestamp,counter) values(" + ts + "," + random.nextInt(100) + ");");
+//                statement.addBatch("insert into root.fabrik1.linie01.steuerung01(timestamp,temperature) values(" + ts + "," + 5.0 * random.nextGaussian() + 15.0 + ");");
             }
             System.out.print(".");
             statement.executeBatch();
